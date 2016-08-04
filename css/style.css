@@ -1,0 +1,38 @@
+/* Masthead heading */
+.masthead {
+  text-align: center;
+}
+/* Main container */
+.main-container {
+  width: 50rem;
+  height: 30rem;
+  margin: 0 auto;
+  /* border: 1px solid pink; */
+}
+/* Half width column */
+.col-1-2 {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+/* All sections */
+.details-section,
+.charges-section,
+.earnings-section {
+  width: 95%;
+  border: 1px solid #000;
+}
+/* Meal details section */
+.details-section {
+  height: 100%;
+}
+/* Customer charges and waitstaff earnings sections */
+.charges-section,
+.earnings-section {
+  height: 46%;
+  float: right;
+}
+/* Customer charges section */
+.charges-section {
+  margin: 0 0 2.3rem 0;
+}
