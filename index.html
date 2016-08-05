@@ -24,7 +24,7 @@
             <section class="details-section">
                 <h2 class="waitstaff-heading">Enter Meal Details</h2>
                 <!-- Meal details form -->
-                <form class="meal-details-form" name="mealDetailsForm" novalidate ng-submit="vm.submit()" autocomplete="false">
+                <form class="meal-details-form" name="mealDetailsForm" ng-init="vm.init()" novalidate ng-submit="vm.submit()" autocomplete="false">
                     <!-- Requirements text -->
                     <p class="required">
                         All fields required; must be numeric.
@@ -41,7 +41,8 @@
                     <!-- Submit button -->
                     <input type="submit" value="Submit" />
                     <!-- Cancel button -->
-                    <button type="button">Cancel</button>
+                    <button type="button" ng-click="vm.clearInput()">Cancel</button>
+                    <button type="button" ng-click="vm.reset()">Reset</button>
                 </form>
             </section>
         </div>
@@ -50,16 +51,16 @@
             <!-- Customer charges section -->
             <section class="charges-section">
                 <h2 class="waitstaff-heading">Customer Charges</h2>
-                Subtotal: ${{ vm.subtotal }}<br />
-                Tip: ${{ vm.tipAmount }}<br />
-                Total: ${{ vm.mealTotal }}
+                Subtotal: $ {{ vm.subtotal }}<br />
+                Tip: $ {{ vm.tipAmount }}<br />
+                Total: $ {{ vm.mealTotal }}
             </section>
             <!-- Earnings info section -->
             <section class="earnings-section">
                 <h2 class="waitstaff-heading">My Earnings Info</h2>
-                Total Tips: ${{ vm.totalTips }}<br />
+                Total Tips: $ {{ vm.totalTips }}<br />
                 Meal Count: {{ vm.mealCount }}<br />
-                Average Tip Per Meal: ${{ vm.avgTip }}
+                Average Tip Per Meal: $ {{ vm.avgTip }}
             </section>
         </div>
     </div>
