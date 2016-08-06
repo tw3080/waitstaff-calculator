@@ -10,10 +10,25 @@
 @submit-color: #A9E5C4;
 @cancel-color: #F9F4A7;
 @reset-color: #F4B0B1;
+@invalid-color: @reset-color;
 
 body {
     font-family: @main-font;
     color: @main-text-color;
+}
+
+/* Main container */
+.main-container {
+    width: 41rem;
+    height: 22rem;
+    margin: 10rem auto;
+    /* border: 1px solid pink; */
+}
+
+/* Header and section heading text */
+.masthead,
+.section-heading {
+    font-family: @headings-font;
 }
 
 /* Header */
@@ -28,19 +43,6 @@ body {
     text-align: center;
     border-bottom: 3px solid @section-border-color;
     background-color: @section-heading-bg;
-}
-
-.masthead,
-.section-heading {
-    font-family: @headings-font;
-}
-
-/* Main container */
-.main-container {
-    width: 41rem;
-    height: 22rem;
-    margin: 10rem auto;
-    /* border: 1px solid pink; */
 }
 
 /* Half width column */
@@ -66,6 +68,7 @@ body {
     height: 100%;
 }
 
+/* Meal details form */
 .meal-label {
     display: inline-block;
     width: 8.5rem;
@@ -78,10 +81,9 @@ body {
     padding: 0.2rem;
     border: 1px solid @main-text-color;
     border-radius: @border-radius;
-    box-shadow: 0 3px 0 @section-border-color;
 }
 
-/* Customer charges and waitstaff earnings sections */
+/* Customer charges and earnings sections */
 .charges-section,
 .earnings-section {
     height: @right-sections-height;
@@ -93,12 +95,25 @@ body {
     margin: 0 0 0.65rem 0;
 }
 
+/* Paragraph text in sections */
 .section-text {
-    margin: 1.25rem 0;
+    margin: 1.25rem 0 1rem 0;
 }
 
+/* Invalid input error message */
+.invalid-input {
+    color: @invalid-color;
+}
+
+// Overrides ng-hide to preserve spacing
+.invalid-input.ng-hide {
+    display: block !important;
+    visibility: hidden;
+}
+
+/* Buttons */
 .btn {
-    width: 30%;
+    width: 27.5%;
     padding: 1rem;
     border: 0;
     font-size: 1rem;
@@ -106,18 +121,21 @@ body {
     color: @btn-text-color;
 }
 
+/* Submit button */
 .btn-submit {
     background-color: @submit-color;
     border-radius: @border-radius;
     box-shadow: 0 3px 0 darken(@submit-color, 10%);
 }
 
+/* Cancel button */
 .btn-cancel {
     background-color: @cancel-color;
     border-radius: @border-radius;
     box-shadow: 0 3px 0 darken(@cancel-color, 20%);
 }
 
+/* Reset button */
 .btn-reset {
     background-color: @reset-color;
     border-radius: @border-radius;

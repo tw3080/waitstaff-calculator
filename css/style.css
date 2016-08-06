@@ -2,6 +2,18 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: #888888;
 }
+/* Main container */
+.main-container {
+  width: 41rem;
+  height: 22rem;
+  margin: 10rem auto;
+  /* border: 1px solid pink; */
+}
+/* Header and section heading text */
+.masthead,
+.section-heading {
+  font-family: 'Roboto', sans-serif;
+}
 /* Header */
 .masthead {
   text-align: center;
@@ -13,17 +25,6 @@ body {
   text-align: center;
   border-bottom: 3px solid #888888;
   background-color: #efefef;
-}
-.masthead,
-.section-heading {
-  font-family: 'Roboto', sans-serif;
-}
-/* Main container */
-.main-container {
-  width: 41rem;
-  height: 22rem;
-  margin: 10rem auto;
-  /* border: 1px solid pink; */
 }
 /* Half width column */
 .col-1-2 {
@@ -45,6 +46,7 @@ body {
 .details-section {
   height: 100%;
 }
+/* Meal details form */
 .meal-label {
   display: inline-block;
   width: 8.5rem;
@@ -56,9 +58,8 @@ body {
   padding: 0.2rem;
   border: 1px solid #888888;
   border-radius: 3px;
-  box-shadow: 0 3px 0 #888888;
 }
-/* Customer charges and waitstaff earnings sections */
+/* Customer charges and earnings sections */
 .charges-section,
 .earnings-section {
   height: 48.2%;
@@ -68,27 +69,40 @@ body {
 .charges-section {
   margin: 0 0 0.65rem 0;
 }
+/* Paragraph text in sections */
 .section-text {
-  margin: 1.25rem 0;
+  margin: 1.25rem 0 1rem 0;
 }
+/* Invalid input error message */
+.invalid-input {
+  color: #F4B0B1;
+}
+.invalid-input.ng-hide {
+  display: block !important;
+  visibility: hidden;
+}
+/* Buttons */
 .btn {
-  width: 30%;
+  width: 27.5%;
   padding: 1rem;
   border: 0;
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
   color: #888888;
 }
+/* Submit button */
 .btn-submit {
   background-color: #A9E5C4;
   border-radius: 3px;
   box-shadow: 0 3px 0 #82d9a9;
 }
+/* Cancel button */
 .btn-cancel {
   background-color: #F9F4A7;
   border-radius: 3px;
   box-shadow: 0 3px 0 #f2e848;
 }
+/* Reset button */
 .btn-reset {
   background-color: #F4B0B1;
   border-radius: 3px;
