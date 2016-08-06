@@ -1,16 +1,45 @@
-@main-sections-border: 1px solid #000;
-@right-sections-height: 46%;
+@headings-font: 'Roboto', sans-serif;
+@main-font: 'Open Sans', sans-serif;
+@right-sections-height: 48.2%;
+@border-radius: 3px;
+@heading-text-color: #888888;
+@main-text-color: @heading-text-color;
+@btn-text-color: @heading-text-color;
+@section-border-color: @heading-text-color;
+@section-heading-bg: #efefef;
+@submit-color: #A9E5C4;
+@cancel-color: #F9F4A7;
+@reset-color: #F4B0B1;
 
-/* Masthead heading */
+body {
+    font-family: @main-font;
+    color: @main-text-color;
+}
+
+/* Header */
 .masthead {
     text-align: center;
 }
 
+/* Section heading text */
+.section-heading {
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 3px solid @section-border-color;
+    background-color: @section-heading-bg;
+}
+
+.masthead,
+.section-heading {
+    font-family: @headings-font;
+}
+
 /* Main container */
 .main-container {
-    width: 50rem;
-    height: 30rem;
-    margin: 0 auto;
+    width: 41rem;
+    height: 22rem;
+    margin: 10rem auto;
     /* border: 1px solid pink; */
 }
 
@@ -25,13 +54,31 @@
 .details-section,
 .charges-section,
 .earnings-section {
-    width: 95%;
-    border: @main-sections-border;
+    width: 98%;
+    text-align: center;
+    border: 1px solid @section-border-color;
+    border-radius: @border-radius;
+    box-shadow: 0 2px 0 @section-border-color;
 }
 
 /* Meal details section */
 .details-section {
     height: 100%;
+}
+
+.meal-label {
+    display: inline-block;
+    width: 8.5rem;
+    text-align: right;
+    line-height: 2em;
+}
+
+.meal-input {
+    width: 4rem;
+    padding: 0.2rem;
+    border: 1px solid @main-text-color;
+    border-radius: @border-radius;
+    box-shadow: 0 3px 0 @section-border-color;
 }
 
 /* Customer charges and waitstaff earnings sections */
@@ -43,5 +90,36 @@
 
 /* Customer charges section */
 .charges-section {
-    margin: 0 0 2.3rem 0;
+    margin: 0 0 0.65rem 0;
+}
+
+.section-text {
+    margin: 1.25rem 0;
+}
+
+.btn {
+    width: 30%;
+    padding: 1rem;
+    border: 0;
+    font-size: 1rem;
+    font-family: @main-font;
+    color: @btn-text-color;
+}
+
+.btn-submit {
+    background-color: @submit-color;
+    border-radius: @border-radius;
+    box-shadow: 0 3px 0 darken(@submit-color, 10%);
+}
+
+.btn-cancel {
+    background-color: @cancel-color;
+    border-radius: @border-radius;
+    box-shadow: 0 3px 0 darken(@cancel-color, 20%);
+}
+
+.btn-reset {
+    background-color: @reset-color;
+    border-radius: @border-radius;
+    box-shadow: 0 3px 0 darken(@reset-color, 10%);
 }
