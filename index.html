@@ -4,45 +4,48 @@
 <head>
     <meta charset="UTF-8" />
     <title>Waitstaff Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <script src="node_modules/angular/angular.min.js"></script>
 </head>
 
 <body ng-controller="MainCtrl as vm">
 
-    <!-- Header -->
-    <header class="masthead">
-        <!-- Heading text -->
-        <h1 class="masthead-heading">Waitstaff Calculator</h1>
-    </header>
-
     <!-- Main content -->
     <div class="main-container">
+        <!-- Header -->
+        <header class="masthead">
+            <!-- Heading text -->
+            <h1 class="masthead-heading">Waitstaff Calculator</h1>
+        </header>
         <!-- Left column -->
         <div class="col-1-2">
             <!-- Meal details section -->
             <section class="details-section">
-                <h2 class="waitstaff-heading">Enter Meal Details</h2>
+                <h2 class="section-heading">Enter Meal Details</h2>
                 <!-- Meal details form -->
                 <form class="meal-details-form" name="mealDetailsForm" ng-init="vm.init()" novalidate ng-submit="vm.submit()" autocomplete="false">
                     <!-- Requirements text -->
-                    <p class="required">
+                    <p class="section-text">
                         All fields required; must be numeric.
                     </p>
                     <!-- Base meal price input -->
-                    <label for="base-meal-price">Base Meal Price: $</label>
-                    <input type="number" id="base-meal-price" ng-model="vm.data.baseMealPrice" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
+                    <label class="meal-label" for="base-meal-price">Base Meal Price: $</label>
+                    <input type="number" id="base-meal-price" class="meal-input" ng-model="vm.data.baseMealPrice" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
                     <!-- Tax rate input -->
-                    <label for="tax-rate">Tax Rate: %</label>
-                    <input type="number" id="tax-rate" ng-model="vm.data.taxRate" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
+                    <label class="meal-label" for="tax-rate">Tax Rate: %</label>
+                    <input type="number" id="tax-rate" class="meal-input" ng-model="vm.data.taxRate" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
                     <!-- Tip percentage input -->
-                    <label for="tip-percent">Tip Percentage: %</label>
-                    <input type="number" id="tip-percent" ng-model="vm.data.tipPercent" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
-                    <!-- Submit button -->
-                    <input type="submit" value="Submit" />
-                    <!-- Cancel button -->
-                    <button type="button" ng-click="vm.clearInput()">Cancel</button>
-                    <button type="button" ng-click="vm.reset()">Reset</button>
+                    <label class="meal-label" for="tip-percent">Tip Percentage: %</label>
+                    <input type="number" id="tip-percent" class="meal-input" ng-model="vm.data.tipPercent" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
+                    <div class="button-area">
+                        <!-- Submit button -->
+                        <input type="submit" class="btn btn-submit" value="Submit" />
+                        <!-- Cancel button -->
+                        <button type="button" class="btn btn-cancel" ng-click="vm.clearInput()">Cancel</button>
+                        <!-- Reset button -->
+                        <button type="button" class="btn btn-reset" ng-click="vm.reset()">Reset</button>
+                    </div>
                 </form>
             </section>
         </div>
@@ -50,17 +53,21 @@
         <div class="col-1-2">
             <!-- Customer charges section -->
             <section class="charges-section">
-                <h2 class="waitstaff-heading">Customer Charges</h2>
-                Subtotal: $ {{ vm.subtotal }}<br />
-                Tip: $ {{ vm.tipAmount }}<br />
-                Total: $ {{ vm.mealTotal }}
+                <h2 class="section-heading">Customer Charges</h2>
+                <p class="section-text">
+                    Subtotal: $ {{ vm.subtotal }}<br />
+                    Tip: $ {{ vm.tipAmount }}<br />
+                    Total: $ {{ vm.mealTotal }}
+                </p>
             </section>
             <!-- Earnings info section -->
             <section class="earnings-section">
-                <h2 class="waitstaff-heading">My Earnings Info</h2>
-                Total Tips: $ {{ vm.totalTips }}<br />
-                Meal Count: {{ vm.mealCount }}<br />
-                Average Tip Per Meal: $ {{ vm.avgTip }}
+                <h2 class="section-heading">Earnings</h2>
+                <p class="section-text">
+                    Total Tips: $ {{ vm.totalTips }}<br />
+                    Meal Count: {{ vm.mealCount }}<br />
+                    Average Tip Per Meal: $ {{ vm.avgTip }}
+                </p>
             </section>
         </div>
     </div>
