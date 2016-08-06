@@ -4,6 +4,9 @@ angular.module('waitStaffApp', []).controller('MainCtrl', function($scope) {
     // Form data from user input
     vm.data = {};
 
+    // For displaying error message
+    vm.formInvalid = false;
+
     // Initilize variables
     vm.init = function() {
         /* TODO: I'd like these to be formatted as 0.00? */
@@ -39,13 +42,14 @@ angular.module('waitStaffApp', []).controller('MainCtrl', function($scope) {
 
     // Submit form
     vm.submit = function() {
+        // If form is valid, populate charges and earnings
         if ($scope.mealDetailsForm.$valid) {
-            console.log('The form is valid');
+            vm.formInvalid = false;
             vm.getCustomerCharges();
             vm.getEarnings();
+        // Else display error message
         } else {
-            // TODO: Add better error handling
-            console.log('The form is invalid');
+            vm.formInvalid = true;
         }
     };
 
