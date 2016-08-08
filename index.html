@@ -57,18 +57,18 @@
             <section class="charges-section">
                 <h2 class="section-heading">Customer Charges</h2>
                 <p class="section-text">
-                    Subtotal: $ {{ vm.subtotal }}<br />
-                    Tip: $ {{ vm.tipAmount }}<br />
-                    Total: $ {{ vm.mealTotal }}
+                    Subtotal: $ {{ vm.subtotal | currency }}<br />
+                    Tip: $ {{ vm.tipAmount | currency }}<br />
+                    Total: $ {{ vm.mealTotal | currency }}
                 </p>
             </section>
             <!-- Earnings info section -->
             <section class="earnings-section">
                 <h2 class="section-heading">Earnings</h2>
                 <p class="section-text">
-                    Total Tips: $ {{ vm.totalTips }}<br />
+                    Total Tips: $ {{ vm.totalTips | currency }}<br />
                     Meal Count: {{ vm.mealCount }}<br />
-                    Average Tip Per Meal: $ {{ vm.avgTip }}
+                    Average Tip Per Meal: $ {{ vm.avgTip | currency }}
                 </p>
             </section>
         </div>
