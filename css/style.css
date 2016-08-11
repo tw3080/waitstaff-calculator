@@ -18,6 +18,18 @@ body {
 .masthead {
   text-align: center;
 }
+/* Navigation */
+.nav {
+  color: #efefef;
+}
+/* Hyperlinks */
+a {
+  color: #888888;
+  text-decoration: none;
+}
+a:hover {
+  color: #efefef;
+}
 /* Puts a margin above content to separate it from navigation */
 .wrapper {
   margin-top: 2rem;

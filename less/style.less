@@ -1,20 +1,19 @@
 @headings-font: 'Roboto', sans-serif;
 @main-font: 'Open Sans', sans-serif;
-@right-sections-height: 48.2%;
 @border-radius: 3px;
-@heading-text-color: #888888;
-@main-text-color: @heading-text-color;
-@btn-text-color: @heading-text-color;
-@section-border-color: @heading-text-color;
+@main-txt-clr: #888888;
+@btn-txt-clr: @main-txt-clr;
+@section-border-clr: @main-txt-clr;
 @section-heading-bg: #efefef;
-@submit-color: #A9E5C4;
-@cancel-color: #F9F4A7;
-@reset-color: #F4B0B1;
-@invalid-color: @reset-color;
+@nav-txt-clr: @section-heading-bg;
+@submit-clr: #A9E5C4;
+@cancel-clr: #F9F4A7;
+@reset-clr: #F4B0B1;
+@invalid-clr: @reset-clr;
 
 body {
     font-family: @main-font;
-    color: @main-text-color;
+    color: @main-txt-clr;
 }
 
 /* Main container */
@@ -36,6 +35,20 @@ body {
     text-align: center;
 }
 
+/* Navigation */
+.nav {
+    color: @nav-txt-clr;
+}
+
+/* Hyperlinks */
+a {
+    color: @main-txt-clr;
+    text-decoration: none;
+    &:hover {
+        color: @nav-txt-clr;
+    }
+}
+
 /* Puts a margin above content to separate it from navigation */
 .wrapper {
     margin-top: 2rem;
@@ -46,7 +59,7 @@ body {
     margin: 0;
     padding: 1rem;
     text-align: center;
-    border-bottom: 3px solid @section-border-color;
+    border-bottom: 3px solid @section-border-clr;
     background-color: @section-heading-bg;
 }
 
@@ -57,9 +70,9 @@ body {
     width: 50%;
     margin: 0 auto;
     text-align: center;
-    border: 1px solid @section-border-color;
+    border: 1px solid @section-border-clr;
     border-radius: @border-radius;
-    box-shadow: 0 2px 0 @section-border-color;
+    box-shadow: 0 2px 0 @section-border-clr;
 }
 
 /* Meal details section */
@@ -79,13 +92,13 @@ body {
 .meal-input {
     width: 4rem;
     padding: 0.2rem;
-    border: 1px solid @main-text-color;
+    border: 1px solid @main-txt-clr;
     border-radius: @border-radius;
 }
 
 /* Invalid input error message */
 .invalid-input {
-    color: @invalid-color;
+    color: @invalid-clr;
 }
 
 /* Overrides ng-hide to preserve spacing */
@@ -101,26 +114,26 @@ body {
     border: 0;
     font-size: 1rem;
     font-family: @main-font;
-    color: @btn-text-color;
+    color: @btn-txt-clr;
 }
 
 /* Submit button */
 .btn-submit {
-    background-color: @submit-color;
+    background-color: @submit-clr;
     border-radius: @border-radius;
-    box-shadow: 0 3px 0 darken(@submit-color, 10%);
+    box-shadow: 0 3px 0 darken(@submit-clr, 10%);
 }
 
 /* Cancel button */
 .btn-cancel {
-    background-color: @cancel-color;
+    background-color: @cancel-clr;
     border-radius: @border-radius;
-    box-shadow: 0 3px 0 darken(@cancel-color, 20%);
+    box-shadow: 0 3px 0 darken(@cancel-clr, 20%);
 }
 
 /* Reset button */
 .btn-reset {
-    background-color: @reset-color;
+    background-color: @reset-clr;
     border-radius: @border-radius;
-    box-shadow: 0 3px 0 darken(@reset-color, 10%);
+    box-shadow: 0 3px 0 darken(@reset-clr, 10%);
 }
