@@ -17,9 +17,13 @@
             <h1>Waitstaff Calculator</h1>
         </header>
         <nav>
-
+            <a ng-href="#/">Home</a> |
+            <a ng-href="#/add-meal">Add Meal</a> |
+            <a ng-href="#/earnings">Earnings</a>
         </nav>
-        <div ng-view></div>
+        <div class="wrapper">
+            <div ng-view></div>
+        </div>
     </div>
 
     <script src="node_modules/angular/angular.min.js"></script>
