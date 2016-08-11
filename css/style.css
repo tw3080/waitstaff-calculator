@@ -5,9 +5,9 @@ body {
 /* Main container */
 .main-container {
   width: 41rem;
-  height: 22rem;
-  margin: 10rem auto;
-  /* border: 1px solid pink; */
+  margin: 10rem auto 0 auto;
+  border: 1px solid pink;
+  text-align: center;
 }
 /* Header and section heading text */
 .masthead,
@@ -18,6 +18,10 @@ body {
 .masthead {
   text-align: center;
 }
+/* Puts a margin above content to separate it from navigation */
+.wrapper {
+  margin-top: 2rem;
+}
 /* Section heading text */
 .section-heading {
   margin: 0;
@@ -26,17 +30,12 @@ body {
   border-bottom: 3px solid #888888;
   background-color: #efefef;
 }
-/* Half width column */
-.col-1-2 {
-  width: 50%;
-  height: 100%;
-  float: left;
-}
 /* All sections */
 .details-section,
 .charges-section,
 .earnings-section {
-  width: 98%;
+  width: 50%;
+  margin: 0 auto;
   text-align: center;
   border: 1px solid #888888;
   border-radius: 3px;
@@ -44,7 +43,8 @@ body {
 }
 /* Meal details section */
 .details-section {
-  height: 100%;
+  height: 21.8rem;
+  margin-bottom: 1rem;
 }
 /* Meal details form */
 .meal-label {
@@ -59,24 +59,11 @@ body {
   border: 1px solid #888888;
   border-radius: 3px;
 }
-/* Customer charges and earnings sections */
-.charges-section,
-.earnings-section {
-  height: 48.2%;
-  float: right;
-}
-/* Customer charges section */
-.charges-section {
-  margin: 0 0 0.65rem 0;
-}
-/* Paragraph text in sections */
-.section-text {
-  margin: 1.25rem 0 1rem 0;
-}
 /* Invalid input error message */
 .invalid-input {
   color: #F4B0B1;
 }
+/* Overrides ng-hide to preserve spacing */
 .invalid-input.ng-hide {
   display: block !important;
   visibility: hidden;
