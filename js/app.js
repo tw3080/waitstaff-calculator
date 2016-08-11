@@ -1,4 +1,16 @@
-angular.module('waitStaffApp', []).controller('MainCtrl', function($scope) {
+angular.module('waitStaffApp', ['ngRoute'])
+.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: 'home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'vm'
+    });
+}])
+.controller('HomeCtrl', function($scope) {
+    // Empty for now
+});
+/*
+.controller('MainCtrl', function($scope) {
     var vm = this;
 
     // Form data from user input
@@ -63,3 +75,4 @@ angular.module('waitStaffApp', []).controller('MainCtrl', function($scope) {
         vm.init();
     };
 });
+*/
