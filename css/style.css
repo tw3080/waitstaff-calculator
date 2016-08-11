@@ -30,9 +30,10 @@ a {
 a:hover {
   color: #efefef;
 }
-/* Puts a margin above content to separate it from navigation */
+/* Puts a margin above content to separate it from navigation; centers content */
 .wrapper {
-  margin-top: 2rem;
+  width: 50%;
+  margin: 2rem auto 0 auto;
 }
 /* Section heading text */
 .section-heading {
@@ -46,8 +47,7 @@ a:hover {
 .details-section,
 .charges-section,
 .earnings-section {
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
   text-align: center;
   border: 1px solid #888888;
   border-radius: 3px;
