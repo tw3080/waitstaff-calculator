@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Waitstaff Calculator</title>
 </head>
-<body>
 
+<body ng-controller="AddMealCtrl as addMealCtrl">
+    <!-- Meal details section -->
+    <section class="details-section">
+        <h2 class="section-heading">Enter Meal Details</h2>
+        <!-- Meal details form -->
+        <form class="meal-details-form" name="mealDetailsForm" novalidate ng-submit="addMealCtrl.submit()" autocomplete="false">
+            <!-- Requirements text -->
+            <p class="section-text">
+                All fields required; must be numeric.
+            </p>
+            <!-- Base meal price input -->
+            <label class="meal-label" for="base-meal-price">Base Meal Price: $</label>
+            <input type="number" id="base-meal-price" class="meal-input" ng-model="addMealCtrl.data.baseMealPrice" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
+            <!-- Tax rate input -->
+            <label class="meal-label" for="tax-rate">Tax Rate: %</label>
+            <input type="number" id="tax-rate" class="meal-input" ng-model="addMealCtrl.data.taxRate" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
+            <!-- Tip percentage input -->
+            <label class="meal-label" for="tip-percent">Tip Percentage: %</label>
+            <input type="number" id="tip-percent" class="meal-input" ng-model="addMealCtrl.data.tipPercent" ng-pattern="/^\d+(?:\.\d+)?$/" step="0.01" required /><br />
+            <!-- Invalid form input error message -->
+            <p class="invalid-input" ng-show="addMealCtrl.service.formInvalid">
+                Please complete all fields.
+            </p>
+            <!-- Submit button -->
+            <input type="submit" class="btn btn-submit" value="Submit" />
+            <!-- Cancel button -->
+            <button type="button" class="btn btn-cancel" ng-click="addMealCtrl.clearInput()">Cancel</button>
+            <!-- Reset button -->
+            <button type="button" class="btn btn-reset" ng-click="addMealCtrl.reset()">Reset</button>
+        </form>
+    </section>
+    <!-- Customer charges section -->
+    <section class="charges-section">
+        <h2 class="section-heading">Customer Charges</h2>
+        <p class="section-text">
+            Subtotal: $ {{ addMealCtrl.service.subtotal | currency }}<br />
+            Tip: $ {{ addMealCtrl.service.tipAmount | currency }}<br />
+            Total: $ {{ addMealCtrl.service.mealTotal | currency }}
+        </p>
+    </section>
 </body>
+
 </html>
