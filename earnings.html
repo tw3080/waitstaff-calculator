@@ -8,12 +8,12 @@
 
 <body ng-controller="EarningsCtrl as earningsCtrl">
     <!-- Earnings info section -->
-    <section class="earnings-section" data-ng-init="earningsCtrl.getEarnings()">
+    <section class="earnings-section">
         <h2 class="section-heading">Earnings</h2>
         <p class="section-text">
-            Total Tips: $ {{ earningsCtrl.service.totalTips | currency }}<br />
+            Total Tips: {{ earningsCtrl.service.totalTips | currency }}<br />
             Meal Count: {{ earningsCtrl.service.mealCount }}<br />
-            Average Tip Per Meal: $ {{ earningsCtrl.service.avgTip | currency }}
+            Average Tip Per Meal: {{ earningsCtrl.service.avgTip | currency }}
         </p>
     </section>
 </body>
