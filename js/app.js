@@ -1,5 +1,6 @@
-angular.module('waitStaffApp', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+var app = angular.module('waitStaffApp', ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'home.html',
         controller: 'HomeCtrl',
@@ -15,11 +16,13 @@ angular.module('waitStaffApp', ['ngRoute'])
         controller: 'EarningsCtrl',
         controllerAs: 'vm'
     });
-}])
-.controller('HomeCtrl', function($scope) {
+}]);
+
+app.controller('HomeCtrl', function($scope) {
     // Empty for now
-})
-.controller('AddMealCtrl', function($scope) {
+});
+
+app.controller('AddMealCtrl', function($scope) {
     var vm = this;
 
     // Form data from user input
@@ -73,8 +76,9 @@ angular.module('waitStaffApp', ['ngRoute'])
         vm.clearInput();
         vm.init();
     };
-})
-.controller('EarningsCtrl', function($scope) {
+});
+
+app.controller('EarningsCtrl', function($scope) {
     var vm = this;
     // Calculates cumulative earnings
     vm.getEarnings = function() {
