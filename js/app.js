@@ -13,6 +13,9 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'earnings.html',
         controller: 'AddMealCtrl',
         controllerAs: 'addMealCtrl'
+    })
+    .otherwise({
+        redirectTo: '/'
     });
 }]);
 
