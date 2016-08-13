@@ -62,19 +62,22 @@ app.controller('AddMealCtrl', function($scope, mealDataService) {
         addMealCtrl.service.mealTotal = addMealCtrl.service.subtotal + (addMealCtrl.service.subtotal * (addMealCtrl.data.taxRate / 100)) + addMealCtrl.service.tipAmount;
     };
 
+    // Calculates cumulative earnings
+    addMealCtrl.getEarnings = function() {
+        // Calculate cumulative total tips
+        addMealCtrl.service.totalTips += addMealCtrl.service.tipAmount;
+        // Calculate average tip per meal
+        addMealCtrl.service.avgTip = addMealCtrl.service.totalTips / addMealCtrl.service.mealCount;
+    };
+
     // Submit form
     addMealCtrl.submit = function() {
-        // If form is valid, populate charges and earnings
+        // If form is valid, populate charges, meal count, and earnings
         if ($scope.mealDetailsForm.$valid) {
             addMealCtrl.service.formInvalid = false;
             addMealCtrl.getCustomerCharges();
             addMealCtrl.service.mealCount++;
-            console.log('adhlkajdlkas');
-            // Calculate cumulative total tips
-            addMealCtrl.service.totalTips += addMealCtrl.service.tipAmount;
-            // Calculate average tip per meal
-            addMealCtrl.service.avgTip = addMealCtrl.service.totalTips / addMealCtrl.service.mealCount;
-            // EarningsCtrl.getEarnings();
+            addMealCtrl.getEarnings();
         // Else display error message
         } else {
             addMealCtrl.service.formInvalid = true;
