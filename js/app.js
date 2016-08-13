@@ -2,31 +2,33 @@ var app = angular.module('waitStaffApp', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'home.html',
-        controller: 'HomeCtrl',
-        controllerAs: 'vm'
+        templateUrl: 'home.html'
     })
     .when('/add-meal', {
         templateUrl: 'add-meal.html',
         controller: 'AddMealCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'addMealCtrl'
     })
     .when('/earnings', {
         templateUrl: 'earnings.html',
-        controller: 'EarningsCtrl',
-        controllerAs: 'vm'
+        controller: 'AddMealCtrl',
+        controllerAs: 'addMealCtrl'
     });
 }]);
 
-app.controller('HomeCtrl', function($scope) {
-    // Empty for now
+app.run(function(mealDataService) {
+    mealDataService.init();
 });
 
-app.controller('AddMealCtrl', function($scope) {
+app.service('mealDataService', function() {
     var vm = this;
 
     // Form data from user input
-    vm.data = {};
+    vm.data = {
+        baseMealPrice: null,
+        tipPercent: null,
+        taxRate: null
+    };
 
     // For displaying error message
     vm.formInvalid = false;
@@ -40,121 +42,52 @@ app.controller('AddMealCtrl', function($scope) {
         vm.mealCount = 0;
         vm.avgTip = 0;
     };
+});
+
+app.controller('AddMealCtrl', function($scope, mealDataService) {
+    var addMealCtrl = this;
+    addMealCtrl.data = mealDataService.data;
+    addMealCtrl.service = mealDataService;
 
     // Calculates charges for each customer
-    vm.getCustomerCharges = function() {
+    addMealCtrl.getCustomerCharges = function() {
         // Calculate subtotal of meal
-        vm.subtotal = vm.data.baseMealPrice;
+        addMealCtrl.service.subtotal = addMealCtrl.data.baseMealPrice;
         // Calculate tip amount based on subtotal and tip percentage
-        vm.tipAmount = vm.subtotal * (vm.data.tipPercent / 100);
+        addMealCtrl.service.tipAmount = addMealCtrl.service.subtotal * (addMealCtrl.data.tipPercent / 100);
         // Calculate total cost of meal, including tax and tip
-        vm.mealTotal = vm.subtotal + (vm.subtotal * (vm.data.taxRate / 100)) + vm.tipAmount;
+        addMealCtrl.service.mealTotal = addMealCtrl.service.subtotal + (addMealCtrl.service.subtotal * (addMealCtrl.data.taxRate / 100)) + addMealCtrl.service.tipAmount;
     };
 
     // Submit form
-    vm.submit = function() {
+    addMealCtrl.submit = function() {
         // If form is valid, populate charges and earnings
         if ($scope.mealDetailsForm.$valid) {
-            vm.formInvalid = false;
-            vm.getCustomerCharges();
-            vm.getEarnings();
+            addMealCtrl.service.formInvalid = false;
+            addMealCtrl.getCustomerCharges();
+            addMealCtrl.service.mealCount++;
+            console.log('adhlkajdlkas');
+            // Calculate cumulative total tips
+            addMealCtrl.service.totalTips += addMealCtrl.service.tipAmount;
+            // Calculate average tip per meal
+            addMealCtrl.service.avgTip = addMealCtrl.service.totalTips / addMealCtrl.service.mealCount;
+            // EarningsCtrl.getEarnings();
         // Else display error message
         } else {
-            vm.formInvalid = true;
+            addMealCtrl.service.formInvalid = true;
         }
     };
 
     // Clear form fields while keeping previously submitted data
-    vm.clearInput = function() {
-        vm.data.baseMealPrice = '';
-        vm.data.taxRate = '';
-        vm.data.tipPercent = '';
+    addMealCtrl.clearInput = function() {
+        addMealCtrl.data.baseMealPrice = null;
+        addMealCtrl.data.taxRate = null;
+        addMealCtrl.data.tipPercent = null;
     };
 
     // Resets the form to its initial state by clearing all input fields and reinitializing variables
-    vm.reset = function() {
-        vm.clearInput();
-        vm.init();
+    addMealCtrl.reset = function() {
+        addMealCtrl.clearInput();
+        addMealCtrl.service.init();
     };
 });
-
-app.controller('EarningsCtrl', function($scope) {
-    var vm = this;
-    // Calculates cumulative earnings
-    vm.getEarnings = function() {
-        // Calculate cumulative total tips
-        vm.totalTips += vm.tipAmount;
-        // Calculate total number of meals
-        vm.mealCount++;
-        // Calculate average tip per meal
-        vm.avgTip = vm.totalTips / vm.mealCount;
-    };
-});
-
-/*
-.controller('MainCtrl', function($scope) {
-    var vm = this;
-
-    // Form data from user input
-    vm.data = {};
-
-    // For displaying error message
-    vm.formInvalid = false;
-
-    // Initilize variables
-    vm.init = function() {
-        vm.subtotal = 0;
-        vm.tipAmount = 0;
-        vm.mealTotal = 0;
-        vm.totalTips = 0;
-        vm.mealCount = 0;
-        vm.avgTip = 0;
-    };
-
-    // Calculates charges for each customer
-    vm.getCustomerCharges = function() {
-        // Calculate subtotal of meal
-        vm.subtotal = vm.data.baseMealPrice;
-        // Calculate tip amount based on subtotal and tip percentage
-        vm.tipAmount = vm.subtotal * (vm.data.tipPercent / 100);
-        // Calculate total cost of meal, including tax and tip
-        vm.mealTotal = vm.subtotal + (vm.subtotal * (vm.data.taxRate / 100)) + vm.tipAmount;
-    };
-
-    // Calculates cumulative earnings
-    vm.getEarnings = function() {
-        // Calculate cumulative total tips
-        vm.totalTips += vm.tipAmount;
-        // Calculate total number of meals
-        vm.mealCount++;
-        // Calculate average tip per meal
-        vm.avgTip = vm.totalTips / vm.mealCount;
-    };
-
-    // Submit form
-    vm.submit = function() {
-        // If form is valid, populate charges and earnings
-        if ($scope.mealDetailsForm.$valid) {
-            vm.formInvalid = false;
-            vm.getCustomerCharges();
-            vm.getEarnings();
-        // Else display error message
-        } else {
-            vm.formInvalid = true;
-        }
-    };
-
-    // Clear form fields while keeping previously submitted data
-    vm.clearInput = function() {
-        vm.data.baseMealPrice = '';
-        vm.data.taxRate = '';
-        vm.data.tipPercent = '';
-    };
-
-    // Resets the form to its initial state by clearing all input fields and reinitializing variables
-    vm.reset = function() {
-        vm.clearInput();
-        vm.init();
-    };
-});
-*/
