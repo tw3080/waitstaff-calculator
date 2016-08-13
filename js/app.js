@@ -1,4 +1,4 @@
-var app = angular.module('waitStaffApp', ['ngRoute']);
+var app = angular.module('waitStaffApp', ['ngRoute', 'ngAnimate']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
@@ -19,7 +19,7 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-app.run(function(mealDataService) {
+app.run(function(mealDataService, $rootScope, $timeout) {
     mealDataService.init();
 });
 
