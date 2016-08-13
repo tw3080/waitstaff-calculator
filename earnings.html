@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Waitstaff Calculator</title>
-</head>
-
-<body ng-controller="EarningsCtrl as earningsCtrl">
+<div ng-controller="AddMealCtrl as addMealCtrl">
     <!-- Earnings info section -->
     <section class="earnings-section">
         <h2 class="section-heading">Earnings</h2>
         <p class="section-text">
-            Total Tips: {{ earningsCtrl.service.totalTips | currency }}<br />
-            Meal Count: {{ earningsCtrl.service.mealCount }}<br />
-            Average Tip Per Meal: {{ earningsCtrl.service.avgTip | currency }}
+            Total Tips: {{ addMealCtrl.service.totalTips | currency }}<br />
+            Meal Count: {{ addMealCtrl.service.mealCount }}<br />
+            Average Tip Per Meal: {{ addMealCtrl.service.avgTip | currency }}
         </p>
     </section>
-</body>
-
-</html>
+</div>

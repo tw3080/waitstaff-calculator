@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Waitstaff Calculator</title>
-</head>
-
-<body ng-controller="AddMealCtrl as addMealCtrl">
+<div ng-controller="AddMealCtrl as addMealCtrl">
     <!-- Meal details section -->
     <section class="details-section">
         <h2 class="section-heading">Enter Meal Details</h2>
@@ -46,6 +38,4 @@
             Total: {{ addMealCtrl.service.mealTotal | currency }}
         </p>
     </section>
-</body>
-
-</html>
+</div>
