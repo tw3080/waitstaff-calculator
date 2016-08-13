@@ -10,6 +10,7 @@ gulp.task('watch', function() {
  });
 
  gulp.task('less', function() {
+    // If changes are detected in less files, compile less into css file on save
     return gulp.src('less/style.less')
         .pipe(less())
         .pipe(gulp.dest('css'));
