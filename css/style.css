@@ -6,7 +6,6 @@ body {
 .main-container {
   width: 41rem;
   margin: 10rem auto 0 auto;
-  border: 1px solid pink;
   text-align: center;
 }
 /* Header and section heading text */
